@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container pb-5">
+    <div class="bento-card text-center py-5 mb-5" style="background: #f8d7da; border: 2px solid #f5c2c7;">
+        <h1 class="fw-bold text-danger">Help & Support Center</h1>
+        <p class="text-danger opacity-75">You are not alone. If you are a victim of cyberbullying, follow these steps immediately.</p>
+    </div>
+
+    <div class="row g-4">
+        <div class="col-lg-8">
+            <div class="bento-card mb-4">
+                <h3 class="fw-bold mb-4">What should you do?</h3>
+                <div class="d-flex mb-4">
+                    <div class="me-3"><span class="badge bg-danger rounded-circle p-3">1</span></div>
+                    <div>
+                        <h5 class="fw-bold">Do Not Retaliate</h5>
+                        <p class="text-muted">Responding with more anger often escalates the situation. Stay calm and do not engage with the bully.</p>
+                    </div>
+                </div>
+                <div class="d-flex mb-4">
+                    <div class="me-3"><span class="badge bg-danger rounded-circle p-3">2</span></div>
+                    <div>
+                        <h5 class="fw-bold">Collect Evidence</h5>
+                        <p class="text-muted">Take screenshots of the messages, comments, or posts. Note the date, time, and social media handles of the harasser.</p>
+                    </div>
+                </div>
+                <div class="d-flex mb-4">
+                    <div class="me-3"><span class="badge bg-danger rounded-circle p-3">3</span></div>
+                    <div>
+                        <h5 class="fw-bold">Report and Block</h5>
+                        <p class="text-muted">Use the platform's internal reporting tools (Instagram, Facebook, X). Block the user immediately to prevent further contact.</p>
+                    </div>
+                </div>
+                <div class="d-flex">
+                    <div class="me-3"><span class="badge bg-danger rounded-circle p-3">4</span></div>
+                    <div>
+                        <h5 class="fw-bold">Talk to Someone</h5>
+                        <p class="text-muted">Reach out to a trusted friend, family member, or a professional counselor. Mental health is the priority.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4">
+            <div class="bento-card bg-dark text-white mb-4">
+                <h4 class="fw-bold mb-4 text-warning">Emergency Contacts</h4>
+                
+                <div class="mb-4">
+                    <h2 class="fw-bold text-white mb-0">1930</h2>
+                    <p class="text-warning small mb-0">National Cyber Crime Helpline</p>
+                    <p class="x-small opacity-75">For financial frauds and digital harassment.</p>
+                </div>
+                
+                <div class="mb-4">
+                    <h2 class="fw-bold text-white mb-0">1098</h2>
+                    <p class="text-info small mb-0">Childline India</p>
+                    <p class="x-small opacity-75">24/7 emergency for children in distress.</p>
+                </div>
+
+                <div>
+                    <h2 class="fw-bold text-white mb-0">181</h2>
+                    <p class="text-danger small mb-0">Women Helpline</p>
+                    <p class="x-small opacity-75">For women facing digital stalking or abuse.</p>
+                </div>
+            </div>
+
+            <div class="bento-card">
+                <h5 class="fw-bold">Official Portal</h5>
+                <p class="small text-muted">You can also file a formal complaint online at:</p>
+                <a href="https://www.cybercrime.gov.in" target="_blank" class="btn btn-outline-primary btn-sm w-100">cybercrime.gov.in</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .x-small { font-size: 0.75rem; }
+    .badge.rounded-circle { width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; }
+</style>
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="bento-card">
+    <h4 class="fw-bold mb-4">My Prediction History</h4>
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Input Text</th>
+                    <th>Result</th>
+                    <th>Confidence</th>
+                    <th>Timestamp</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for scan in scans %}
+                <tr>
+                    <td>{{ scan[0] }}</td>
+                    <td><span class="badge {{ 'bg-danger' if scan[1] == 'Bullying' else 'bg-success' }}">{{ scan[1] }}</span></td>
+                    <td>{{ scan[2] }}%</td>
+                    <td class="text-muted small">{{ scan[3] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

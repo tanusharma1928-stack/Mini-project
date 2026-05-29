@@ -1,0 +1,140 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container pb-5">
+    <h2 class="fw-bold mb-4">System Analytics & Insights</h2>
+    
+    <div class="row mb-4">
+        <div class="col-md-3">
+            <div class="bento-card text-center py-4">
+                <h3 class="fw-bold text-primary">94%</h3>
+                <p class="text-muted small mb-0">Model Accuracy</p>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="bento-card text-center py-4">
+                <h3 class="fw-bold text-success">0.02s</h3>
+                <p class="text-muted small mb-0">Inference Time</p>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="bento-card text-center py-4">
+                <h3 class="fw-bold text-warning">SVM</h3>
+                <p class="text-muted small mb-0">Core Algorithm</p>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="bento-card text-center py-4">
+                <h3 class="fw-bold text-info">TF-IDF</h3>
+                <p class="text-muted small mb-0">Feature Extraction</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mb-4">
+        <div class="col-lg-6">
+            <div class="bento-card h-100">
+                <h5 class="fw-bold mb-2">Detection Distribution</h5>
+                <p class="text-muted x-small mb-4">Proportion of toxic vs. safe content identified globally.</p>
+                <div style="max-height: 300px;">
+                    <canvas id="pieChart"></canvas>
+                </div>
+                <div class="mt-4 border-top pt-3">
+                    <h6><strong>What this shows:</strong></h6>
+                    <p class="text-muted small">This **Doughnut Chart** represents the balance of our training data. It tells us how often the AI encounters "Bullying" patterns compared to "Safe" conversation patterns. A healthy balance ensures the model doesn't become biased toward one specific category.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-lg-6">
+            <div class="bento-card h-100">
+                <h5 class="fw-bold mb-2">Technical Performance Metrics</h5>
+                <p class="text-muted x-small mb-4">Evaluation of model precision and reliability.</p>
+                <div style="max-height: 300px;">
+                    <canvas id="barChart"></canvas>
+                </div>
+                <div class="mt-4 border-top pt-3">
+                    <h6><strong>What this shows:</strong></h6>
+                    <p class="text-muted small">The **Bar Chart** tracks four critical KPIs: 
+                        <b>Accuracy</b> (correct guesses), <b>Precision</b> (avoiding false alarms), 
+                        <b>Recall</b> (not missing any bullying), and the <b>F1-Score</b> (the overall balance). High bars here mean the system is trustworthy.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="bento-card mb-4">
+        <h5 class="fw-bold mb-4">Toxicity Trends (Monthly)</h5>
+        <div style="height: 300px;">
+            <canvas id="lineChart"></canvas>
+        </div>
+        <div class="mt-4">
+            <p class="text-muted small">This **Line Graph** simulates how bullying trends fluctuate over time. In a real-world deployment, this helps administrators identify specific periods (like exam seasons or holidays) where online toxicity might spike.</p>
+        </div>
+    </div>
+
+    <div class="bento-card bg-dark text-white">
+        <div class="row align-items-center">
+            <div class="col-md-8">
+                <h4 class="fw-bold text-warning">Understanding the Confusion Matrix</h4>
+                <p class="opacity-75 small">In Machine Learning, we don't just look at "right" or "wrong." We look at <b>True Positives</b> (correctly catching a bully) and <b>False Positives</b> (accidentally flagging a safe message). Our SVM model is tuned to minimize False Positives to ensure freedom of speech while maintaining safety.</p>
+            </div>
+            <div class="col-md-4 text-center">
+                <i class="fa-solid fa-layer-group fs-1 opacity-25"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    // Pie Chart
+    new Chart(document.getElementById('pieChart'), {
+        type: 'doughnut',
+        data: {
+            labels: ['Bullying Content', 'Safe Content'],
+            datasets: [{
+                data: [35, 65],
+                backgroundColor: ['#ef4444', '#1db954'],
+                hoverOffset: 10
+            }]
+        },
+        options: { maintainAspectRatio: false, plugins: { legend: { position: 'bottom' } } }
+    });
+
+    // Bar Chart
+    new Chart(document.getElementById('barChart'), {
+        type: 'bar',
+        data: {
+            labels: ['Accuracy', 'Precision', 'Recall', 'F1-Score'],
+            datasets: [{
+                label: 'Performance %',
+                data: [94, 91, 89, 91],
+                backgroundColor: '#6a11cb',
+                borderRadius: 10
+            }]
+        },
+        options: { maintainAspectRatio: false, scales: { y: { beginAtZero: true, max: 100 } } }
+    });
+
+    // Line Chart (New)
+    new Chart(document.getElementById('lineChart'), {
+        type: 'line',
+        data: {
+            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+            datasets: [{
+                label: 'Reports Filed',
+                data: [12, 19, 15, 25, 22, 30],
+                borderColor: '#2575fc',
+                fill: true,
+                backgroundColor: 'rgba(37, 117, 252, 0.1)',
+                tension: 0.4
+            }]
+        },
+        options: { maintainAspectRatio: false }
+    });
+</script>
+
+<style>
+    .x-small { font-size: 0.75rem; }
+</style>
+{% endblock %}

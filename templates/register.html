@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShieldAI - Register</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #FF9A8B 0%, #FF6A88 55%, #FF99AC 100%);
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            margin: 0;
+        }
+        .register-card {
+            background: white;
+            padding: 40px;
+            border-radius: 28px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            width: 100%;
+            max-width: 420px;
+        }
+        .form-control {
+            border-radius: 12px;
+            padding: 12px 15px;
+            background: #fffcfc;
+        }
+        .btn-register {
+            background: #FF6A88;
+            border: none;
+            border-radius: 12px;
+            padding: 12px;
+            font-weight: 700;
+            color: white;
+            transition: all 0.3s ease;
+        }
+        .btn-register:hover {
+            background: #f85273;
+            transform: scale(1.02);
+            color: white;
+        }
+        .alert {
+            border-radius: 12px;
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="register-card">
+        <div class="text-center mb-4">
+            <h2 class="fw-bold" style="color: #FF6A88;">Join ShieldAI</h2>
+            <p class="text-muted small">Create an account to start detecting cyberbullying</p>
+        </div>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+            {% for category, message in messages %}
+              <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+
+        <form method="POST">
+            <div class="mb-3">
+                <label class="form-label small fw-bold text-secondary">Choose Username</label>
+                <input type="text" name="username" class="form-control" placeholder="e.g. Rahul_2024" required>
+            </div>
+            <div class="mb-4">
+                <label class="form-label small fw-bold text-secondary">Create Password</label>
+                <input type="password" name="password" class="form-control" placeholder="Minimum 6 characters" required>
+            </div>
+            <button type="submit" class="btn btn-register w-100 shadow-sm">Register Account</button>
+        </form>
+
+        <div class="text-center mt-4">
+            <p class="small text-muted">Already have an account? <a href="/login" class="fw-bold text-decoration-none" style="color: #FF6A88;">Login Here</a></p>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

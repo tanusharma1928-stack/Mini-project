@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container pb-5">
+    <div class="bento-card text-white text-center py-5 mb-5" style="background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);">
+        <h1 class="fw-bold display-4">The Science of Detection</h1>
+        <p class="opacity-75 fs-5">How ShieldAI processes human language into actionable data.</p>
+    </div>
+
+    <div class="row mb-5">
+        <div class="col-lg-10 mx-auto">
+            <h2 class="fw-bold mb-4 text-center">The Natural Language Processing (NLP) Pipeline</h2>
+            <p class="text-muted text-center mb-5">Before the AI can "read," the text must undergo a rigorous cleaning process called Preprocessing.</p>
+            
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <div class="bento-card h-100 border-start border-primary border-4">
+                        <h5 class="fw-bold"><i class="fa-solid fa-broom me-2 text-primary"></i>1. Tokenization & Cleaning</h5>
+                        <p class="small text-muted">The raw sentence is broken down into individual "tokens" (words). We remove special characters, emojis, and punctuation that don't contribute to the sentiment analysis. Everything is converted to lowercase to ensure "Bad" and "bad" are treated the same.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="bento-card h-100 border-start border-success border-4">
+                        <h5 class="fw-bold"><i class="fa-solid fa-scissors me-2 text-success"></i>2. Stopword Removal</h5>
+                        <p class="small text-muted">Common words like "is", "the", "and", and "a" are removed. These words appear frequently in both safe and bullying messages, so they act as "noise." Removing them allows the model to focus on high-impact keywords.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="bento-card bg-light mb-5 py-5">
+        <div class="row align-items-center">
+            <div class="col-md-6">
+                <h2 class="fw-bold mb-4">TF-IDF Vectorization</h2>
+                <p class="text-muted">Machine Learning models cannot understand English letters; they only understand numbers. We use <b>Term Frequency-Inverse Document Frequency (TF-IDF)</b>.</p>
+                <ul class="text-muted small">
+                    <li><b>Term Frequency:</b> How often a word appears in a specific message.</li>
+                    <li><b>Inverse Document Frequency:</b> How unique a word is across the entire dataset.</li>
+                </ul>
+                <p class="text-muted">This creates a "feature vector" where hurtful words that are specific to bullying are given higher mathematical weight.</p>
+            </div>
+            <div class="col-md-6 text-center">
+                <div class="p-4 bg-white rounded-4 shadow-sm">
+                    <code class="text-primary fw-bold" style="font-size: 1.2rem;">Text $\rightarrow$ [0.12, 0.0, 0.85, 0.44]</code>
+                    <p class="mt-2 mb-0 x-small text-uppercase fw-bold text-muted">Mathematical Representation</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mb-5">
+        <div class="col-lg-10 mx-auto text-center">
+            <h2 class="fw-bold mb-4">Support Vector Machine (SVM)</h2>
+            <p class="text-muted mb-5">Our engine uses a Linear SVM Classifier. It works by finding the "Hyperplane" that best separates two classes of data: <b>Bullying</b> and <b>Non-Bullying</b>.</p>
+            
+            
+            
+            <div class="row g-4 mt-2">
+                <div class="col-md-4">
+                    <div class="bento-card p-3">
+                        <i class="fa-solid fa-chart-line text-primary mb-3 fs-3"></i>
+                        <h6>High Accuracy</h6>
+                        <p class="x-small text-muted">Effective in high-dimensional spaces (like text data).</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="bento-card p-3">
+                        <i class="fa-solid fa-bolt text-warning mb-3 fs-3"></i>
+                        <h6>Real-time Speed</h6>
+                        <p class="x-small text-muted">Predictions happen in milliseconds after the user clicks 'Scan'.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="bento-card p-3">
+                        <i class="fa-solid fa-memory text-success mb-3 fs-3"></i>
+                        <h6>Memory Efficient</h6>
+                        <p class="x-small text-muted">Uses a subset of training points (support vectors) in the decision function.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="bento-card text-center mb-5" style="border-top: 5px solid #11998e;">
+        <h3 class="fw-bold mb-3">Continuous Improvement</h3>
+        <p class="text-muted px-lg-5">Every message analyzed contributes to the system's history. By reviewing the <b>Dashboard</b> metrics, we can identify new trends in digital language and retrain the model to adapt to modern slang and evolving patterns of online harassment.</p>
+        <div class="mt-4">
+            <a href="/index" class="btn btn-primary btn-lg rounded-pill px-5">Back to Analyzer</a>
+        </div>
+    </div>
+</div>
+
+<style>
+    .x-small { font-size: 0.8rem; }
+    code { background: #f8f9fa; padding: 10px 20px; border-radius: 10px; display: inline-block; }
+</style>
+{% endblock %}
